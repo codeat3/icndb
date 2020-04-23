@@ -3,6 +3,7 @@
 namespace Codeat3\Icndb;
 
 use Codeat3\Icndb\Exceptions\APIUnavailableException;
+use Codeat3\Icndb\Exceptions\ChainNotAllowedException;
 
 class Icndb
 {
@@ -148,7 +149,7 @@ class Icndb
     public function get()
     {
         if (count($this->method) > 1) {
-            throw new \LogicException('Cannot use [' . implode(', ', $this->method) . '] at the same time.');
+            throw new ChainNotAllowedException('Cannot use [' . implode(', ', $this->method) . '] at the same time.');
         }
         $ch = curl_init($this->getURL());
 
@@ -163,7 +164,7 @@ class Icndb
 
         $this->response['status'] = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        if ($this->response['status'] != 200 or $resp == '') {
+        if ($this->response['status'] != 200 || $resp == '') {
             throw new APIUnavailableException('API Unreachable');
         }
 

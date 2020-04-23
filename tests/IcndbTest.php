@@ -2,6 +2,7 @@
 
 namespace Codeat3\Icndb\Tests;
 
+use Codeat3\Icndb\Exceptions\ChainNotAllowedException;
 use Codeat3\Icndb\Icndb;
 use LogicException;
 use PHPUnit\Framework\TestCase;
@@ -53,7 +54,7 @@ class IcndbTest extends TestCase
     /** @test */
     public function checks_specific_and_random_cannot_be_chained()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(ChainNotAllowedException::class);
         // You can't get a random, and a specific joke all at the same time
         $this->wrapper->random()->specific(1)->get();
     }
@@ -61,7 +62,7 @@ class IcndbTest extends TestCase
     /** @test */
     public function should_not_chain_jokes_and_categories()
     {
-        $this->expectException(LogicException::class);
+        $this->expectException(ChainNotAllowedException::class);
         // You can't get a random, and a specific joke all at the same time
         $this->wrapper->specific(1)->categories()->get();
     }
