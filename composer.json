@@ -1,0 +1,42 @@
+{
+    "name": "codeat3/icndb",
+    "description": "",
+    "keywords": [
+        "codeat3",
+        "icndb"
+    ],
+    "homepage": "https://github.com/codeat3/icndb",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Swapnil Sarwe",
+            "email": "swapnilsarwe@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codeat3\\Icndb\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Codeat3\\Icndb\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
