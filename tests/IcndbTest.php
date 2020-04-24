@@ -3,7 +3,7 @@
 namespace Codeat3\Icndb\Tests;
 
 use Codeat3\Icndb\Exceptions\ChainNotAllowedException;
-use Codeat3\Icndb\Icndb;
+use Codeat3\Icndb\IcndbClient;
 use LogicException;
 use PHPUnit\Framework\TestCase;
 
@@ -11,7 +11,7 @@ class IcndbTest extends TestCase
 {
     public function setUp()
     {
-        $this->wrapper = new Icndb();
+        $this->wrapper = new IcndbClient();
     }
 
     /** @test */
@@ -22,7 +22,7 @@ class IcndbTest extends TestCase
             'lastName' => 'Doe'
         );
 
-        $wrapper = new Icndb($config);
+        $wrapper = new IcndbClient($config);
 
         $this->assertAttributeEquals($config, 'config', $wrapper);
     }
